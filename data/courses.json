@@ -26,5 +26,21 @@
   {
     "id": 7,
     "name": "new course 7"
+  },
+  {
+    "id": 8,
+    "name": "JAVA"
+  },
+  {
+    "id": 9,
+    "name": "math"
+  },
+  {
+    "id": 10,
+    "name": "html"
+  },
+  {
+    "id": 11,
+    "name": "physics"
   }
 ]

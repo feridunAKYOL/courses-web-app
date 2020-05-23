@@ -6,6 +6,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const exphbs = require('express-handlebars');
 const Joi = require('joi');
 
 const express = require('express');
@@ -15,8 +16,23 @@ const cors = require('cors');
 
 const api = require('./api');
 const config = require('./config');
+const courses = require('./data/courses.json');
 
 const app = express();
+
+// Handlebars Middleware
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+app.set('view engine', 'handlebars');
+
+// Homepage Route
+app.get('/', (req, res) =>
+	res.render('index', {
+		title: 'Courses List',
+		courses
+	})
+);
+
+app.use('/', express.static(path.join(__dirname, 'client')));
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -30,12 +46,9 @@ if (config.MODE === 'development') {
 	app.use(morgan('dev'));
 }
 
-app.use('/', express.static(path.join(__dirname, 'client')));
+app.use(express.urlencoded({ extended: false }));
 
 app.use('/api', api);
-
-
-
 
 
 

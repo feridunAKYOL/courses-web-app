@@ -6,7 +6,7 @@ const path = require('path');
 const router = express.Router();
 
 
-router.get('/', controllers.hello);
+//router.get('/', controllers.hello);
 
 // write your routes
 

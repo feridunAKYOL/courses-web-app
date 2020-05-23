@@ -35,14 +35,6 @@ const writeToCourses = async () => {
 	fs.writeFile(file_path, writingData, callbackWrite);
 };
 
-// validate the course name
-function validationCourse(course) {
-	const schema = {
-		name: Joi.string().min(3).required()
-	};
-
-	return Joi.validate(course, schema);
-}
 // this is the main part... GET, POST, DELETE and PUT requests
 const controllers = {
 	hello: (req, res) => {
@@ -78,10 +70,9 @@ const controllers = {
 			name: req.body.name
 		};
 		courses.push(course);
-
 		writeToCourses(courses);
 
-		res.send(course);
+		res.redirect("/");
 	},
 
 	// change the name of any course
@@ -111,15 +102,16 @@ const controllers = {
 		writeToCourses();
 
 		// Return the updated course
-		res.send(course);
+		res.send(courses);
 	},
 
 	// delete a course by id
 	deleteCourse: (req, res) => {
 		// Look up the course
 		//  Not existing, return 404
-		const course = courses.find((course) => course.id === parseInt(req.params.id));
-
+		const course = courses.find((course) => course.id == parseInt(req.query.id));
+		console.log(course);
+		
 		if (!course) return res.status(404).send('The course with the given Id was not found.');
 
 		// Delete
@@ -132,5 +124,14 @@ const controllers = {
 		res.send(course);
 	}
 };
+
+// validate the course name
+function validationCourse(course) {
+	const schema = {
+		name: Joi.string().min(3).required()
+	};
+
+	return Joi.validate(course, schema);
+}
 
 module.exports = controllers;

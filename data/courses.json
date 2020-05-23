@@ -8,39 +8,15 @@
     "name": "new course 2"
   },
   {
-    "id": 3,
-    "name": "new course 3"
-  },
-  {
     "id": 4,
     "name": "new course 4"
-  },
-  {
-    "id": 5,
-    "name": "new course 5"
-  },
-  {
-    "id": 6,
-    "name": "new course 6?"
   },
   {
     "id": 7,
     "name": "new course 7"
   },
   {
-    "id": 8,
-    "name": "JAVA"
-  },
-  {
-    "id": 9,
-    "name": "math"
-  },
-  {
     "id": 10,
-    "name": "html"
-  },
-  {
-    "id": 11,
-    "name": "physics"
+    "name": "HTML5"
   }
 ]

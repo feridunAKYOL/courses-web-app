@@ -48,7 +48,7 @@ const controllers = {
 
 	// get only one course name
 	get1Course: (req, res) => {
-		const course = courses.find((course) => course.id === parseInt(req.params.id));
+		const course = courses.find((course) => course.id == parseInt(req.body.id));
 
 		if (!course) return res.status(404).send('The course with the given ID was not found.');
 		res.send(course);
@@ -79,22 +79,22 @@ const controllers = {
 	putCourse: (req, res) => {
 		// Look up the course
 		// If not existing, return 404
-		const course = courses.find((course) => course.id === parseInt(req.params.id));
+		const course = courses.find((course) => course.id === parseInt(req.body.id));
 
 		if (!course) {
 			res.status(404).send('The course with the given Id was not found..');
 			return;
 		}
 
-		// object restructuring
-		const { error } = validationCourse(req.body); // result.error
+		// // object restructuring
+		// const { error } = validationCourse(req.body); // result.error
 
-		if (error) {
-			// 400 Bad request
-			// res.status(400).send(result.error);
-			res.status(400).send(error.details[0].message);
-			return;
-		}
+		// if (error) {
+		// 	// 400 Bad request
+		// 	// res.status(400).send(result.error);
+		// 	res.status(400).send(error.details[0].message);
+		// 	return;
+		// }
 		// Update course
 		course.name = req.body.name;
 
@@ -102,15 +102,15 @@ const controllers = {
 		writeToCourses();
 
 		// Return the updated course
-		res.send(courses);
+		res.redirect("/");
 	},
 
 	// delete a course by id
 	deleteCourse: (req, res) => {
 		// Look up the course
 		//  Not existing, return 404
-		const course = courses.find((course) => course.id == parseInt(req.query.id));
-		console.log(course);
+		const course = courses.find((course) => course.id == parseInt(req.body.id));
+		console.log("coursem" , course);
 		
 		if (!course) return res.status(404).send('The course with the given Id was not found.');
 
@@ -121,7 +121,7 @@ const controllers = {
 		writeToCourses();
 
 		// Return the same course
-		res.send(course);
+		res.redirect("/");
 	}
 };
 
@@ -129,6 +129,7 @@ const controllers = {
 function validationCourse(course) {
 	const schema = {
 		name: Joi.string().min(3).required()
+		
 	};
 
 	return Joi.validate(course, schema);

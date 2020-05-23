@@ -10,17 +10,26 @@
         <input type="submit" value="Add Course" class="btn btn-info btn-block mt-3">
       </div>
     </form>
-    <form action="/api/courses" method="POST" class="mb-4">
+    <form action="/api/courses/anyCourse" method="POST" class="mb-4">
+      <div class="form-group">
+        <label for="id">Course ID</label>
+        <input type="number" name="id" class="form-control">
+        <input type="submit" value="ANY COURSE" class="btn btn-warning btn-block mt-3">
+      </div>
+    </form>
+    <form action="/api/courses/delete" method="POST" class="mb-4">
       <div class="form-group">
         <label for="name">Course ID</label>
         <input type="number" name="id" class="form-control">
         <input type="submit" value="DELETE COURSE" class="btn btn-danger btn-block mt-3">
       </div>
     </form>
-    <form action="/api/courses" method="POST" class="mb-4">
+    <form action="/api/courses/change" method="POST" class="mb-4">
       <div class="form-group">
-        <label for="name">Course ID</label>
+        <label for="id">Course ID</label>
         <input type="number" name="id" class="form-control">
+        <label for="name">Course Name</label>
+        <input type="text" name="name" class="form-control">
         <input type="submit" value="CHANGE COURSE" class="btn btn-primary btn-block mt-3">
       </div>
     </form>

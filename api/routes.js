@@ -13,14 +13,14 @@ const router = express.Router();
 
 router.get('/courses', controllers.getCourses);
 
-router.get('/courses/:id', controllers.get1Course);
+router.post('/courses/anyCourse', controllers.get1Course);
 
 router.post('/courses', controllers.postCourse);
 
-router.put('/courses/:id', controllers.putCourse);
+router.post('/courses/change', controllers.putCourse);
 
 
 
-router.delete('/courses/:id', controllers.deleteCourse);
+router.post('/courses/delete', controllers.deleteCourse);
 
 module.exports = router;

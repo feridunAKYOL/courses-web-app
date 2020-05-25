@@ -1,5 +1,5 @@
 module.exports = {
   MODE: 'default',
-  PORT: 3000,
+  PORT: 8080,
   DATA_DIR: '/db'
 };

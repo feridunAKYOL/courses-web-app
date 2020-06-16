@@ -1,5 +1,5 @@
 module.exports = {
   MODE: 'production',
   PORT: process.env.PORT,
-  DATA_DIR: ./data/courses.json
+  DATA_DIR: /data
 };
